@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QuizManager.Data
+namespace QuizManager.Business
 {
     public class Class1
     {
