@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using QuizManager.Business;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace QuizManager.Data
@@ -17,10 +18,10 @@ namespace QuizManager.Data
             // Creating users for the database 
             var users = new User[]
             {
-                new User { Username = "robbaile", Password = "rob", IsEditor = true, IsRestricted = true, IsViewer = true },
-                new User { Username = "alan", Password = "alan", IsEditor = true, IsRestricted = true, IsViewer = true },
-                new User { Username = "steve", Password = "steve", IsEditor = true, IsRestricted = true, IsViewer = true },
-                new User { Username = "test", Password = "password", IsEditor = false, IsRestricted = true, IsViewer = false }
+                new User { Username = "robbaile", Password = SecurePasswordHasher.Hash("rob"), IsEditor = true, IsRestricted = true, IsViewer = true },
+                new User { Username = "alan", Password = SecurePasswordHasher.Hash("alan"), IsEditor = true, IsRestricted = true, IsViewer = true },
+                new User { Username = "steve", Password = SecurePasswordHasher.Hash("steve"), IsEditor = true, IsRestricted = true, IsViewer = true },
+                new User { Username = "test", Password = SecurePasswordHasher.Hash("password"), IsEditor = false, IsRestricted = true, IsViewer = false }
             };
 
             foreach (var user in users)
