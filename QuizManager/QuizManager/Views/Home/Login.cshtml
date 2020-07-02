@@ -1,17 +1,23 @@
-﻿
+﻿@model QuizManager.Models.LoginModel
 @{
     ViewData["Title"] = "Login";
 }
 
 <h1>Welcome to Quiz Manager</h1>
 <h2>Login</h2>
-<form action="/Home/Login" method="POST">
-    <label>Username</label>
-    <input type="text" name="username" />
-    <label>Password</label>
-    <input type="password" name="password"/>
-    <button>Login</button>
-</form>
 
-
+@using (Html.BeginForm())
+{
+<div>
+    @Html.LabelFor(model => model.Username)
+    @Html.EditorFor(model => model.Username)
+    @Html.ValidationMessageFor(model => model.Username)
+</div>
+<div>
+    @Html.LabelFor(model => model.Password)
+    @Html.PasswordFor(model => model.Password)
+    @Html.ValidationMessageFor(model => model.Password)
+</div>
+<button>Login</button>
+}
 

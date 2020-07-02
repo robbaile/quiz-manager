@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using QuizManager.Authentication;
 using QuizManager.Models;
 
 namespace QuizManager.Controllers
@@ -12,29 +10,50 @@ namespace QuizManager.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private ILoginUser _loginUser;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ILoginUser loginUser)
         {
             _logger = logger;
+            _loginUser = loginUser;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
+            if(HttpContext.Session.GetString("Username") == null)
+            {
+                return Redirect("/Home/Login");
+            }
+
             return View();
         }
 
         [HttpGet]
         public IActionResult Login()
         {
+            if(HttpContext.Session.GetString("Username") != null)
+            {
+                return Redirect("/");
+            }
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult Login(string username, string password)
+        public IActionResult Login(LoginModel loginModel)
         {
-            
-            return Redirect("/Home/Index");
+            if (ModelState.IsValid)
+            {
+                var isLoginSuccess = _loginUser.Login(loginModel, HttpContext.Session);
+
+                if (isLoginSuccess)
+                {
+                    return Redirect("/Home/Index");
+                }
+            }
+
+            return View(loginModel);
         }
 
         public IActionResult Privacy()

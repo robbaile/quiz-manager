@@ -1,4 +1,6 @@
-﻿using QuizManager.Interfaces;
+﻿using Microsoft.AspNetCore.Http;
+using QuizManager.Interfaces;
+using QuizManager.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,16 +17,17 @@ namespace QuizManager.Authentication
             _userService = userService;
         }
 
-        public bool AuthenticateUser(string username, string password)
+        public bool Login(LoginModel loginModel, ISession session)
         {
-            var user = _userService.Authenticate(username, password).GetAwaiter().GetResult();
+            var user = _userService.Authenticate(loginModel.Username, loginModel.Password).GetAwaiter().GetResult();
 
             if(user.Username == null)
             {
                 return false;
             }
 
-            // setup session
+            session.SetString("Username", user.Username);
+            session.SetString("UserId", user.Id.ToString());
 
             return true;
         }

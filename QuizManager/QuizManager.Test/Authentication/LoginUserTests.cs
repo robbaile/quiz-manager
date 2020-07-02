@@ -1,9 +1,11 @@
 ﻿using FakeItEasy;
 using FluentAssertions;
+using Microsoft.AspNetCore.Http;
 using NUnit.Framework;
 using QuizManager.Authentication;
 using QuizManager.Data;
 using QuizManager.Interfaces;
+using QuizManager.Models;
 
 namespace QuizManager.Tests.Authentication
 {
@@ -11,12 +13,15 @@ namespace QuizManager.Tests.Authentication
     public class LoginUserTests
     {
         private IUserService _userService;
+        private ISession _session;
         private LoginUser _loginUser;
+
 
         [SetUp]
         public void Setup()
         {
             _userService = A.Fake<IUserService>();
+            _session = A.Fake<ISession>();
             _loginUser = new LoginUser(_userService);
         }
 
@@ -24,6 +29,11 @@ namespace QuizManager.Tests.Authentication
         public void LoginUserWithCorrectDetailsReturnsTrue()
         {
             // Arrange
+            var loginModel = new LoginModel
+            {
+                Username = "rob",
+                Password = "rob"
+            };
             A.CallTo(() => _userService.Authenticate("rob", "rob"))
                 .Returns(new User
                 {
@@ -35,7 +45,7 @@ namespace QuizManager.Tests.Authentication
                 });
 
             // Act 
-            var actual = _loginUser.AuthenticateUser("rob", "rob");
+            var actual = _loginUser.Login(loginModel, _session);
 
             // assert 
             actual.Should().BeTrue();

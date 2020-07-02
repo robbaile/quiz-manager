@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using QuizManager.Interfaces;
 using QuizManager.Web.Services;
 using QuizManager.Data;
+using QuizManager.Authentication;
+using System;
 
 namespace QuizManager.Web
 {
@@ -24,7 +26,12 @@ namespace QuizManager.Web
         {
             services.AddControllersWithViews();
 
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(15);//You can set Time   
+            });
+
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ILoginUser, LoginUser>();
 
             services.AddDbContext<QuizManagerContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -45,6 +52,8 @@ namespace QuizManager.Web
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
