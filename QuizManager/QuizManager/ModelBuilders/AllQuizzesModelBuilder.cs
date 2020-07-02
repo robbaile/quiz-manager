@@ -18,7 +18,24 @@ namespace QuizManager.ModelBuilders
 
         public AllQuizzesModel Build()
         {
-            throw new NotImplementedException();
+            var model = new AllQuizzesModel()
+            {
+                Quizzes = new List<QuizOverview>()
+            };
+            var quizzes = _quizService.GetAllQuizzes().GetAwaiter().GetResult();
+
+            foreach (var quiz in quizzes)
+            {
+                var quizOverview = new QuizOverview
+                {
+                    Id = quiz.Id,
+                    Title = quiz.Title
+                };
+
+                model.Quizzes.Add(quizOverview);
+            }
+
+            return model;
         }
     }
 }

@@ -7,6 +7,6 @@ namespace QuizManager.Models
 {
     public class AllQuizzesModel
     {
-        List<QuizOverview> Quizzes { get; set; }
+        public List<QuizOverview> Quizzes { get; set; }
     }
 }
