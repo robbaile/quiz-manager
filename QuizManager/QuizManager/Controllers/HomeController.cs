@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuizManager.Authentication;
+using QuizManager.Interfaces;
 using QuizManager.Models;
 
 namespace QuizManager.Controllers
@@ -11,11 +12,13 @@ namespace QuizManager.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ILoginUser _loginUser;
+        private IAllQuizzesModelBuilder _allQuizzesModelBuilder;
 
-        public HomeController(ILogger<HomeController> logger, ILoginUser loginUser)
+        public HomeController(ILogger<HomeController> logger, ILoginUser loginUser, IAllQuizzesModelBuilder allQuizzesModelBuilder)
         {
             _logger = logger;
             _loginUser = loginUser;
+            _allQuizzesModelBuilder = allQuizzesModelBuilder;
         }
 
         [HttpGet]
@@ -26,9 +29,9 @@ namespace QuizManager.Controllers
                 return Redirect("/Home/Login");
             }
 
+            var model = _allQuizzesModelBuilder.Build();
 
-
-            return View();
+            return View(model);
         }
 
         [HttpGet]

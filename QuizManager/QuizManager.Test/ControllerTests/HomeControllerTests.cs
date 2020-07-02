@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using QuizManager.Authentication;
 using QuizManager.Controllers;
+using QuizManager.Interfaces;
 using QuizManager.Models;
 
 namespace QuizManager.Tests.ControllerTests
@@ -16,6 +17,7 @@ namespace QuizManager.Tests.ControllerTests
         private ILogger<HomeController> _logger;
         private ISession _session;
         private ILoginUser _loginUser;
+        private IAllQuizzesModelBuilder _allQuizzesModelBuilder;
 
         [SetUp]
         public void Setup()
@@ -26,8 +28,9 @@ namespace QuizManager.Tests.ControllerTests
             };
             _loginUser = A.Fake<ILoginUser>();
             _logger = A.Fake<ILogger<HomeController>>();
+            _allQuizzesModelBuilder = A.Fake<IAllQuizzesModelBuilder>();
             _session = A.Fake<ISession>();
-            _controller = new HomeController(_logger, _loginUser);
+            _controller = new HomeController(_logger, _loginUser, _allQuizzesModelBuilder);
             context.HttpContext.Session = _session;
             _controller.ControllerContext = context;
         }

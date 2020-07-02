@@ -5,12 +5,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QuizManager.Interfaces;
-using QuizManager.Web.Services;
 using QuizManager.Data;
 using QuizManager.Authentication;
 using System;
+using QuizManager.Services;
+using QuizManager.ModelBuilders;
 
-namespace QuizManager.Web
+namespace QuizManager
 {
     public class Startup
     {
@@ -30,8 +31,10 @@ namespace QuizManager.Web
                 options.IdleTimeout = TimeSpan.FromMinutes(15);//You can set Time   
             });
 
-            services.AddTransient<IUserService, UserService>();
             services.AddTransient<ILoginUser, LoginUser>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IQuizService, QuizService>();
+            services.AddTransient<IAllQuizzesModelBuilder, AllQuizzesModelBuilder>();
 
             services.AddDbContext<QuizManagerContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

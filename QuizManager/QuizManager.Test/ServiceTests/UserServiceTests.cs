@@ -4,7 +4,7 @@ using NUnit.Framework;
 using QuizManager.Data;
 using QuizManager.Data.Passwords;
 using QuizManager.Interfaces;
-using QuizManager.Web.Services;
+using QuizManager.Services;
 
 namespace QuizManager.Tests.ServiceTests
 {

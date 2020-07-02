@@ -2,10 +2,9 @@
 using QuizManager.Data;
 using QuizManager.Data.Passwords;
 using QuizManager.Interfaces;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace QuizManager.Web.Services
+namespace QuizManager.Services
 {
     public class UserService : IUserService
     {
