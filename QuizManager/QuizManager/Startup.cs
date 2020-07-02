@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using QuizManager.Interfaces;
+using QuizManager.Web.Services;
 using QuizManager.Data;
 
-namespace QuizManager
+namespace QuizManager.Web
 {
     public class Startup
     {
@@ -21,6 +23,8 @@ namespace QuizManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddTransient<IUserService, UserService>();
 
             services.AddDbContext<QuizManagerContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

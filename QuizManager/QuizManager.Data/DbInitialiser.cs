@@ -1,4 +1,4 @@
-﻿using QuizManager.Business;
+﻿using QuizManager.Data.Passwords;
 using System.Collections.Generic;
 using System.Linq;
 

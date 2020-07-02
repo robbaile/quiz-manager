@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-namespace QuizManager.Business
+namespace QuizManager.Data.Passwords
 {
     public static class SecurePasswordHasher
     {

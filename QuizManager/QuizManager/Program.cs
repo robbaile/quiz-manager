@@ -9,7 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using QuizManager.Data;
 
-namespace QuizManager
+namespace QuizManager.Web
 {
     public class Program
     {

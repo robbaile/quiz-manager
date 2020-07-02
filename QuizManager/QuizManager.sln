@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizManager", "QuizManager\QuizManager.csproj", "{B0A242C9-CA8D-4566-87B4-D346274BE64F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizManager", "QuizManager\QuizManager.csproj", "{B0A242C9-CA8D-4566-87B4-D346274BE64F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizManager.Data", "QuizManager.Data\QuizManager.Data.csproj", "{1CBFC736-C412-461E-9BDA-19188671E640}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizManager.Data", "QuizManager.Data\QuizManager.Data.csproj", "{1CBFC736-C412-461E-9BDA-19188671E640}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizManager.Business", "QuizManager.Business\QuizManager.Business.csproj", "{977716ED-7DD4-487C-80C0-B9476922A9C9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizManager.Tests", "QuizManager.Test\QuizManager.Tests.csproj", "{A586010A-4EED-40C5-A77B-842B48A45C6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizManager.Tests", "QuizManager.Test\QuizManager.Tests.csproj", "{A586010A-4EED-40C5-A77B-842B48A45C6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		{1CBFC736-C412-461E-9BDA-19188671E640}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CBFC736-C412-461E-9BDA-19188671E640}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CBFC736-C412-461E-9BDA-19188671E640}.Release|Any CPU.Build.0 = Release|Any CPU
-		{977716ED-7DD4-487C-80C0-B9476922A9C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{977716ED-7DD4-487C-80C0-B9476922A9C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{977716ED-7DD4-487C-80C0-B9476922A9C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{977716ED-7DD4-487C-80C0-B9476922A9C9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A586010A-4EED-40C5-A77B-842B48A45C6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A586010A-4EED-40C5-A77B-842B48A45C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A586010A-4EED-40C5-A77B-842B48A45C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,10 +1,9 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using QuizManager.Business;
+using QuizManager.Data.Passwords;
 
 namespace QuizManager.Tests.BusinessTests
 {
-
     [TestFixture]
     public class SecurePasswordHasherTests
     {
@@ -12,13 +11,13 @@ namespace QuizManager.Tests.BusinessTests
         public void SecurePasswordHasherHashShouldReturnHashedPassword()
         {
             // arrange
-            var expected = "$MYHASH$V1$10000$+soXGnoX+HMdZu4wlyoArKITiXrIz1rPJ1Mdnc8b9N1HwGru";
+            var expected = "$MYHASH$";
 
             // act
             var actual = SecurePasswordHasher.Hash("rob");
 
             // assert
-            actual.Should().BeEquivalentTo(expected);
+            actual.Substring(0, 8).Should().BeEquivalentTo(expected);
         }
 
         [Test]
