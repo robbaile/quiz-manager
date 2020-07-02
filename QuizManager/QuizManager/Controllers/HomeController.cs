@@ -26,6 +26,8 @@ namespace QuizManager.Controllers
                 return Redirect("/Home/Login");
             }
 
+
+
             return View();
         }
 
