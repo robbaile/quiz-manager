@@ -43,17 +43,19 @@ namespace QuizManager.Controllers
         [HttpPost]
         public IActionResult Login(LoginModel loginModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var isLoginSuccess = _loginUser.Login(loginModel, HttpContext.Session);
-
-                if (isLoginSuccess)
-                {
-                    return Redirect("/Home/Index");
-                }
+                return View(loginModel);
             }
 
-            return View(loginModel);
+            var isLoginSuccess = _loginUser.Login(loginModel, HttpContext.Session);
+
+            if (isLoginSuccess)
+            {
+                return Redirect("/Home/Index");
+            }
+
+            return View("Login");
         }
 
         public IActionResult Privacy()
