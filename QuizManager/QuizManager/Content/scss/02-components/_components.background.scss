@@ -1,0 +1,20 @@
+﻿@import '../01-settings/settings';
+
+body {
+    font-family: sans-serif;
+    background-color: $color-tertiary;
+    color: #ffffff;
+}
+
+.container {
+
+    &__image {
+        background-image: url("/img/background.png");
+        background-size: cover;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+}

@@ -63,6 +63,15 @@ namespace QuizManager.Controllers
             return View("Login");
         }
 
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+
+            return Redirect("/Home/Login");
+        }
+
+        [HttpGet]
         public IActionResult Privacy()
         {
             return View();

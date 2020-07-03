@@ -1,9 +1,12 @@
 ﻿@model QuizManager.Models.AllQuizzesModel
 @{
-    ViewData["Title"] = "Home Page";
+    var outUsername = new byte[10];
+    Context.Session.TryGetValue("Username", out outUsername);
+    var username = System.Text.Encoding.UTF8.GetString(outUsername);
 }
 
-<h1>Welcome back, </h1>
+<h1>Welcome back, @username</h1>
+<a href="/Home/Logout">Logout</a>
 
 <div>
     @foreach (var quiz in Model.Quizzes)

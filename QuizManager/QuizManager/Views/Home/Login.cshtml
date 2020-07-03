@@ -3,21 +3,24 @@
     ViewData["Title"] = "Login";
 }
 
-<h1>Welcome to Quiz Manager</h1>
-<h2>Login</h2>
+    <div class="login__container">
+        <h1 class="login_heading">Welcome to Quiz Manager</h1>
+        <h2 class="login_sub-heading">Login</h2>
 
-@using (Html.BeginForm())
-{
-<div>
-    @Html.LabelFor(model => model.Username)
-    @Html.EditorFor(model => model.Username)
-    @Html.ValidationMessageFor(model => model.Username)
-</div>
-<div>
-    @Html.LabelFor(model => model.Password)
-    @Html.PasswordFor(model => model.Password)
-    @Html.ValidationMessageFor(model => model.Password)
-</div>
-<button>Login</button>
-}
+        @using (Html.BeginForm())
+        {
+            <div>
+                @Html.LabelFor(model => model.Username, new { @class = "login__label" })
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "login__input" } })
+                @Html.ValidationMessageFor(model => model.Username)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Password, new { @class = "login__label" })
+                @Html.PasswordFor(model => model.Password, new { @class = "login__input" })
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            <button class="login__button">Login</button>
+        }
+    </div>
+
 

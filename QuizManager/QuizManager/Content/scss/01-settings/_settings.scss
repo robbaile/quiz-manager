@@ -1,0 +1,112 @@
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+
+// Fonts
+$font-size-base:                                        16px !default;
+$root-font-size:                                        16px !default;
+$font-family-base:                                      sans-serif !default;
+
+// Spacing
+$spacing-unit:                                          1rem !default;
+
+// Core Colours
+$color-primary:                                         #5997B9 !default;
+$color-accent:                                          #000000 !default;
+$color-secondary:                                       #374785!default;
+$color-tertiary:                                        #24305E !default;
+$color-foreground:                                      #F76C6C !default;
+$color-background:                                      $color-primary !default;
+$color-font:                                            #ffffff !default;
+$color-font--light:                                     #9b9b9b !default;
+$color-primary--light:                                  #dfe9ff !default;
+$color-primary--lighter:                                #F4F3F7 !default;
+$color-primary--transparent:                            rgba($color-primary, 0.25);
+$color-secondary--light:                                #E9F5FC !default;
+$color-primary--dark:                                   #000000 !default;
+
+
+// Status Colours
+$color-green:                                           #60b973 !default;
+$color-red:                                             $color-tertiary !default;
+
+// Greyscale
+$color-grey:                                            #CBCBCB !default;
+$color-grey--dark:                                      #1D1E20 !default;
+$color-grey--light:                                     #DADADA !default;
+$color-grey--lighter:                                   #F4F4F4 !default;
+
+// Headings
+$headings-font-family:                                  $font-family-base !default;
+$headings-font-weight:                                  bold !default;
+$headings-line-height:                                  1.25 !default;
+$headings-color:                                        $color-primary !default;
+$headings-margin-bottom:                                $spacing-unit !default;
+
+
+$font-size-h1:                                          $font-size-base * 2.0 !default;
+$font-color-h1:                                         $color-primary !default;
+
+$font-size-h2:                                          $font-size-base * 1.6 !default;
+$font-color-h2:                                         $color-primary !default;
+
+$font-size-h3:                                          $font-size-base * 1.4 !default;
+$font-color-h3:                                         $color-primary !default;
+
+$font-size-h4:                                          $font-size-base * 1.2 !default;
+$font-color-h4:                                         $color-primary !default;
+
+$font-size-h5:                                          $font-size-base * 1.1 !default;
+$font-color-h5:                                         $color-primary !default;
+
+$font-size-h6:                                          $font-size-base * 1.0 !default;
+$font-color-h6:                                         $color-primary !default;
+
+$font-family-base:                                      sans-serif !default;
+$font-color-base:                                       $color-font !default;
+$line-height-base:                                      1.5 !default;
+
+$body-bg-base:                                          $color-background !default;
+$body-padding:                                          70px 0 0 0 !default;
+$body-padding--desktop:                                 100px 0 0 0 !default;
+
+// Rounded Corners
+$border-radius-base:                                    6px !default;
+$border-color-base:                                     black !default;
+
+// Link(s)
+$link-color:                                            $color-secondary !default;
+$link-decoration:                                       underline  !default;
+$link-hover-decoration-color:                           $link-color !default;
+$link-hover-decoration:                                 none !default;
+
+$link-border-color:                                     $color-secondary !default;
+$link-text-decoration-color:                            #BCE7FD !default;
+
+$link-color-hover:                                      #148BDC !default;
+$link-color-active:                                     #006EB3 !default;
+
+$link-secondary-text-decoration-color:                  #D6D2D5 !default; 
+$link-secondary-color-active:                           #493D83 !default;
+
+
+/// Buttons
+$button-primary-text-color:                             #ffffff !default;
+$button-primary-background:                             $color-tertiary !default;
+$button-primary-border:                                 $color-tertiary !default;
+
+$button-primary-text-color-hover:                       #ffffff !default;
+$button-primary-background-hover:                       $color-secondary !default;
+$button-primary-border-hover:                           transparent !default;
+
+$button-primary-background-pressed:                     #006EB3 !default;
+$button-primary-border-pressed:                         transparent !default;
+
+$button-primary-background-disabled:                    #D8DADB !default;
+$button-primary-border-disabled:                        transparent !default;
+
+
+
+
