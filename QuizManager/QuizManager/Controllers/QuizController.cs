@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QuizManager.Interfaces;
 using QuizManager.Models;
@@ -22,6 +19,11 @@ namespace QuizManager.Controllers
         [HttpGet]
         public IActionResult Index(int id)
         {
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return Redirect("/Home/Login");
+            }
+
             var model = _quizModelBuilder.Build(id);
 
             return View(model);
@@ -31,8 +33,26 @@ namespace QuizManager.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Results([FromBody]AnswersModel answers)
         {
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return Redirect("/Home/Login");
+            }
+
             var model = _resultModelBuilder.Build(answers);
             return Json(model);
+        }
+
+        [HttpGet]
+        public IActionResult Viewer(int id)
+        {
+            if (HttpContext.Session.GetString("Username") == null || HttpContext.Session.GetString("IsViewer") == "False")
+            {
+                return Redirect("/Home/Login");
+            }
+
+            var model = _quizModelBuilder.Build(id);
+
+            return View(model);
         }
     }
 }

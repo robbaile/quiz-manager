@@ -1,0 +1,17 @@
+﻿@model QuizManager.Models.Quiz
+@{
+    ViewData["Title"] = "Viewer";
+}
+
+<h1>@Model.Title Quiz Viewer</h1>
+
+@foreach (var question in Model.Questions)
+{
+    <p>Question - @question.QuestionText</p>
+    <p>Correct Answer - @question.CorrectAnswer</p>
+    <p>Wrong answers @foreach (var wrongAnswer in question.WrongAnswers)
+    {
+        <span>- @wrongAnswer</span>
+    }</p>
+}
+

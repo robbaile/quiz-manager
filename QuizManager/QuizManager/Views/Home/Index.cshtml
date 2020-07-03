@@ -3,6 +3,15 @@
     var outUsername = new byte[10];
     Context.Session.TryGetValue("Username", out outUsername);
     var username = System.Text.Encoding.UTF8.GetString(outUsername);
+
+    var outIsEditor = new byte[10];
+    Context.Session.TryGetValue("IsEditor", out outIsEditor);
+    var isEditor = System.Text.Encoding.UTF8.GetString(outIsEditor);
+
+    var outIsViewer = new byte[10];
+    Context.Session.TryGetValue("IsEditor", out outIsViewer);
+    var isViewer = System.Text.Encoding.UTF8.GetString(outIsViewer);
+
 }
 
 <h1>Welcome back, @username</h1>
@@ -11,10 +20,20 @@
 <div>
     @foreach (var quiz in Model.Quizzes)
     {
-        <div>
-            <p>@quiz.Title</p>
-            <a href="/Quiz?id=@quiz.Id">Try quiz</a>
-        </div>
+    <div>
+        <p>@quiz.Title</p>
+        <a href="/Quiz?id=@quiz.Id">Try quiz</a>
+        @if (isEditor == "True")
+        {
+            <a href="/Quiz/Edit?id=@quiz.Id">Edit quiz</a>
+        }
+
+        @if (isViewer == "True")
+        {
+            <a href="/Quiz/Viewer?id=@quiz.Id">View quiz</a>
+        }
+
+    </div>
     }
 </div>
 

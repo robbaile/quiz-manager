@@ -28,6 +28,9 @@ namespace QuizManager.Authentication
 
             session.SetString("Username", user.Username);
             session.SetString("UserId", user.Id.ToString());
+            session.SetString("IsEditor", user.IsEditor.ToString());
+            session.SetString("IsViewer", user.IsViewer.ToString());
+            session.SetString("IsRestricted", user.IsRestricted.ToString());
 
             return true;
         }
