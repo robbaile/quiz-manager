@@ -8,6 +8,10 @@ namespace QuizManager.Interfaces
 {
     public interface IQuizService
     {
-        public Task<List<Quiz>> GetAllQuizzes(); 
+        public Task<List<Quiz>> GetAllQuizzes();
+
+        public Task<Quiz> GetQuiz(int id);
+
+        public Task<int> GetTotatlQuizQuestions(int id);
     }
 }

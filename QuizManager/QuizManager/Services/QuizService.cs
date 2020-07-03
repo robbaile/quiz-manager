@@ -20,5 +20,25 @@ namespace QuizManager.Services
         {
             return await _quizManagerContext.Quizzes.ToListAsync();
         }
+
+        public async Task<Quiz> GetQuiz(int id)
+        {
+            return await _quizManagerContext.Quizzes
+                .Include(a => a.Questions)
+                .ThenInclude(b => b.CorrectAnswer)
+                .Include(c => c.Questions)
+                .ThenInclude(d => d.WrongAnswers)
+                .ThenInclude(e => e.Answers)
+                .FirstOrDefaultAsync(quiz => quiz.Id == id);
+        }
+
+        public async Task<int> GetTotatlQuizQuestions(int id)
+        {
+            var quiz = await _quizManagerContext.Quizzes
+                .Include(a => a.Questions)
+                .FirstOrDefaultAsync(quiz => quiz.Id == id);
+
+            return quiz.Questions.Count();
+        }
     }
 }

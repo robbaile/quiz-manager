@@ -34,7 +34,10 @@ namespace QuizManager
             services.AddTransient<ILoginUser, LoginUser>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IQuizService, QuizService>();
+            services.AddTransient<IScoreService, ScoreService>();
             services.AddTransient<IAllQuizzesModelBuilder, AllQuizzesModelBuilder>();
+            services.AddTransient<IQuizModelBuilder, QuizModelBuilder>();
+            services.AddTransient<IResultModelBuilder, ResultModelBuilder>();
 
             services.AddDbContext<QuizManagerContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

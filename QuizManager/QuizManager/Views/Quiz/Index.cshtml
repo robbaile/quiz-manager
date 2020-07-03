@@ -1,0 +1,40 @@
+﻿@model QuizManager.Models.Quiz
+<h1>@Model.Title Quiz</h1>
+<p>Answer questions and then submit to see how you've done!</p>
+
+<div id="Quiz-Body">
+    @using (Html.BeginForm("Results", "Quiz", FormMethod.Post, new { @id = "Quiz-Form" }))
+    {
+        foreach (var question in Model.Questions)
+        {
+            <p>@question.QuestionText?</p>
+
+            var potentialAnswers = new List<string>();
+            potentialAnswers.Add(question.CorrectAnswer);
+            foreach (var answer in question.WrongAnswers)
+            {
+                potentialAnswers.Add(answer);
+            }
+
+            foreach (var answer in potentialAnswers.Distinct().OrderBy(x => System.Guid.NewGuid().ToString()).ToList())
+            {
+                <p>@answer</p>
+            }
+
+            @Html.Hidden("QuestionId", question.Id.ToString())
+
+            <select name="Answer">
+                @foreach (var answer in potentialAnswers.Distinct().OrderBy(x => System.Guid.NewGuid().ToString()).ToList())
+                {
+                    <option value="@answer">@answer</option>
+                }
+            </select>
+        }
+
+        <button>Check my answers!</button>
+        @Html.AntiForgeryToken();
+    }
+</div>
+
+
+
