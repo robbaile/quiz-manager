@@ -3,18 +3,38 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit @Model.Title Quiz</h1>
+<div class="edit__header">
+    <h1 class="edit__header--heading">Edit @Model.Title Quiz</h1>
+    <p class="edit__header--sub-heading">Here you can edit, add and delete questions</p>
+    <div class="edit__header--nav">
+        <a class="page__link" href="/Home/Index">Home</a>
+        <a class="page__link" href="/Home/Logout">Logout</a>
+    </div>
+</div>
 
-<a href="/Quiz/NewQuestion?id=@Model.Id">Add new question</a>
-@foreach (var question in Model.Questions)
-{
-    <p>Question: @question.QuestionText</p>
-    <p>Correct Answer: @question.CorrectAnswer</p>
-    <p>
-        Wrong answers @foreach (var wrongAnswer in question.WrongAnswers)
-        {
-            <span>- @wrongAnswer</span>
-        }
-    </p>
-    <a href="/Quiz/EditQuestion?id=@Model.Id&questionId=@question.Id">Edit Question</a>
-}
+
+<div class="edit__container">
+    <div class="edit__buttons">
+        <a class="edit__button" href="/Quiz/Delete?id=@Model.Id">Delete Quiz</a>
+        <a class="edit__button" href="/Quiz/NewQuestion?id=@Model.Id">Add new question</a>
+    </div>
+
+    @foreach (var question in Model.Questions)
+    {
+        <div class="edit__question">
+            <p class="edit__question--heading">Question: @question.QuestionText</p>
+            <p><strong>Correct Answer:</strong> @question.CorrectAnswer</p>
+            <p>
+                <strong>Wrong answers:</strong> @foreach (var wrongAnswer in question.WrongAnswers)
+                {
+                    <span> @wrongAnswer</span>
+                }
+            </p>
+            <div class="edit__question--buttons">
+                <a class="edit__question--button" href="/Quiz/EditQuestion?id=@Model.Id&questionId=@question.Id">Edit Question</a>
+                <a class="edit__question--button" href="/Quiz/DeleteQuestion?id=@Model.Id&questionId=@question.Id">Delete Question</a>
+            </div>
+        </div>
+    }
+</div>
+

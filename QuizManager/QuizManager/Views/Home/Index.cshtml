@@ -14,32 +14,48 @@
 
 }
 
-<h1>Welcome back, @username</h1>
-<a href="/Home/Logout">Logout</a>
+<div class="home">
+    <div class="home__header">
+        <h1 class="home__header--heading">Quiz Manager</h1>
+        <h2 class="home__header--sub-heading">Welcome back, @username</h2>
+        <div class="home__header--logout">
+            <a class="page__link" href="/Home/Logout">Logout</a>
+        </div>
+    </div>
 
-@if(isEditor == "True")
-{
-    <a href="/Quiz/New">Create new Quiz</a>
-}
-
-
-<div>
-    @foreach (var quiz in Model.Quizzes)
-    {
-    <div>
-        <p>@quiz.Title</p>
-        <a href="/Quiz?id=@quiz.Id">Try quiz</a>
+    <div class="home__main">
+        <div class="home__quiz">
+            @foreach (var quiz in Model.Quizzes)
+            {
+                <div class="home__quiz--container">
+                    <div>
+                        <p class="home__quiz--heading">@quiz.Title</p>
+                    </div>
+                    <div class="home__quiz--links">
+                        <a class="home__quiz--link" href="/Quiz?id=@quiz.Id">Try quiz</a>
+                        @if (isEditor == "True")
+                        {<a class="home__quiz--link" href="/Quiz/Edit?id=@quiz.Id">Edit quiz</a>}
+                        @if (isViewer == "True")
+                        {<a class="home__quiz--link" href="/Quiz/Viewer?id=@quiz.Id">View quiz</a>}
+                    </div>
+                </div>
+            }
+        </div>
         @if (isEditor == "True")
         {
-            <a href="/Quiz/Edit?id=@quiz.Id">Edit quiz</a>
+            <div class="home__main--quiz-link__container">
+                <a class="home__main--quiz-link" href="/Quiz/New">Create new Quiz</a>
+            </div>
         }
-
-        @if (isViewer == "True")
-        {
-            <a href="/Quiz/Viewer?id=@quiz.Id">View quiz</a>
-        }
-
     </div>
-    }
+
+
+
 </div>
+
+
+
+
+
+
 

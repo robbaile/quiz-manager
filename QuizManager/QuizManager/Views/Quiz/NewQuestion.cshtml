@@ -3,22 +3,28 @@
     ViewData["Title"] = "NewQuestion";
 }
 
-<h1>Create new Question</h1>
+<div class="edit-question__header">
+    <h1 class="edit-question__header--heading">Create New Question</h1>
+    <div class="edit__header--nav">
+        <a class="page__link" href="/Home/Index">Home</a>
+        <a class="page__link" href="/Home/Logout">Logout</a>
+    </div>
+</div>
 
-<div id="Quiz-Body">
+<div class="edit-question__container" id="Quiz-Body">
     @using (Html.BeginForm("CreateQuestion", "Quiz", FormMethod.Post, new { @id = "Create-Question-Form" }))
     {
-        <label for="Question">Question</label>
-        <input name="Question" type="text" />
-        <label for="CorrectAnswer">Correct Answer</label>
-        <input name="CorrectAnswer" type="text" />
-        <label for="WrongAnswers">Wrong Answers</label>
-        <input name="WrongAnswers-1" type="text" />
-        <input name="WrongAnswers-2" type="text" />
-        <input name="WrongAnswers-3" type="text" />
+        <label class="edit-question__label" for="Question">Question</label>
+        <input class="edit-question__input" name="Question" type="text" />
+        <label class="edit-question__label" for="CorrectAnswer">Correct Answer</label>
+        <input class="edit-question__input" name="CorrectAnswer" type="text" />
+        <label class="edit-question__label" for="WrongAnswers">Wrong Answers</label>
+        <input class="edit-question__input" name="WrongAnswers-1" type="text" />
+        <input class="edit-question__input" name="WrongAnswers-2" type="text" />
+        <input class="edit-question__input" name="WrongAnswers-3" type="text" />
         <input name="QuizId" type="hidden" value="@ViewBag.UserId" />
         <div class="error-text"></div>
-        <button>Add Question</button>
+        <button class="edit-question__button">Add Question</button>
     }
 </div>
 

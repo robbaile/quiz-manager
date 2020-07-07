@@ -3,15 +3,26 @@
     ViewData["Title"] = "Viewer";
 }
 
-<h1>@Model.Title Quiz Viewer</h1>
+<div class="edit-question__header">
+    <h1 class="edit-question__header--heading">@Model.Title Quiz Viewer</h1>
+    <div class="edit__header--nav">
+        <a class="page__link" href="/Home/Index">Home</a>
+        <a class="page__link" href="/Home/Logout">Logout</a>
+    </div>
+</div>
 
-@foreach (var question in Model.Questions)
-{
-    <p>Question - @question.QuestionText</p>
-    <p>Correct Answer - @question.CorrectAnswer</p>
-    <p>Wrong answers @foreach (var wrongAnswer in question.WrongAnswers)
+<div class="add-quiz__container">
+    @foreach (var question in Model.Questions)
     {
-        <span>- @wrongAnswer</span>
-    }</p>
-}
-
+        <div class="add-quiz__section">
+            <p>Question - @question.QuestionText?</p>
+            <p>Correct Answer - @question.CorrectAnswer</p>
+            <p>
+                Wrong answers @foreach (var wrongAnswer in question.WrongAnswers)
+                {
+                    <span>- @wrongAnswer</span>
+                }
+            </p>
+        </div>
+    }
+</div>

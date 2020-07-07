@@ -18,8 +18,12 @@ namespace QuizManager.Interfaces
 
         public Task<bool> CreateQuiz(Models.NewQuizModel newQuiz);
 
+        public Task<bool> DeleteQuiz(int id);
+
         public Task<bool> UpdateQuestion(Models.Question question);
 
         public Task<bool> CreateQuestion(Models.NewQuestionModel question);
+
+        public Task<string> DeleteQuestion(int quizId, int id);
     }
 }

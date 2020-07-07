@@ -70,6 +70,19 @@ namespace QuizManager.Controllers
         }
 
         [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            if (HttpContext.Session.GetString("Username") == null || HttpContext.Session.GetString("IsEditor") == "False")
+            {
+                return Redirect("/Home/Login");
+            }
+
+            _quizModelBuilder.Delete(id);
+
+            return Redirect("/Home/Index");
+        }
+
+        [HttpGet]
         public IActionResult EditQuestion(int id, int questionId)
         {
             if (HttpContext.Session.GetString("Username") == null || HttpContext.Session.GetString("IsEditor") == "False")
@@ -118,6 +131,24 @@ namespace QuizManager.Controllers
 
             var model = _quizModelBuilder.CreateQuestion(newQuestion);
             return Json(model);
+        }
+
+        [HttpGet]
+        public IActionResult DeleteQuestion(int id, int questionId)
+        {
+            if (HttpContext.Session.GetString("Username") == null || HttpContext.Session.GetString("IsEditor") == "False")
+            {
+                return Redirect("/Home/Login");
+            }
+
+            var deletedEntity = _quizModelBuilder.DeleteQuestion(id, questionId);
+
+            if(deletedEntity == "quiz")
+            {
+                return Redirect("/Home/Index");
+            }
+
+            return Redirect("/Quiz/Edit?id=" + id);
         }
 
         [HttpGet]

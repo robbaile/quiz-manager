@@ -184,5 +184,50 @@ namespace QuizManager.Services
                 return false;
             }
         }
+
+        public async Task<bool> DeleteQuiz(int id)
+        {
+            try
+            {
+                var quiz = await GetQuiz(id);
+                _quizManagerContext.Quizzes.Remove(quiz);
+                await _quizManagerContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+        }
+
+        public async Task<string> DeleteQuestion(int quizId, int id)
+        {
+            try
+            {
+                var quiz = await GetQuiz(quizId);
+                var question = await GetQuestion(id);
+                var deletedEntity = "";
+
+                if(quiz.Questions.Count == 1)
+                {
+                    _quizManagerContext.Quizzes.Remove(quiz);
+                    deletedEntity = "quiz";
+                } else
+                {
+                    _quizManagerContext.Questions.Remove(question);
+                    deletedEntity = "question";
+                }
+                
+                await _quizManagerContext.SaveChangesAsync();
+                return deletedEntity;
+            }
+            catch (Exception)
+            {
+                return "false";
+            }
+            
+        }
     }
 }

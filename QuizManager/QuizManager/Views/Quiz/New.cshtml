@@ -3,31 +3,39 @@
     ViewData["Title"] = "New";
 }
 
-<h1>Create new Quiz</h1>
+<div class="edit-question__header">
+    <h1 class="edit-question__header--heading">Create New Quiz</h1>
+    <div class="edit__header--nav">
+        <a class="page__link" href="/Home/Index">Home</a>
+        <a class="page__link" href="/Home/Logout">Logout</a>
+    </div>
+</div>
 
-<div id="Quiz-Body">
+<div class="add-quiz__container" id="Quiz-Body">
     @using (Html.BeginForm("Create", "Quiz", FormMethod.Post, new { @id = "Create-Quiz-Form" }))
     {
-        <label for="Title">Title</label>
-        <input type="text" name="Title" id="Title" />
-
-        <div id="Added-Questions"></div>
-
-        <div>
-            <p>Add question</p>
-            <label for="Add-Question">Question</label>
-            <input type="text" name="Add-Question" id="Question" />
-            <label for="Correct-Answer">Correct Answer</label>
-            <input type="text" name="Correct-Answer" id="Correct-Answer" />
-            <label for="Wrong-Answer-1">Wrong Answers</label>
-            <input type="text" name="Wrong-Answer-1" id="Wrong-Answer-1" />
-            <input type="text" name="Wrong-Answer-2" id="Wrong-Answer-2" />
-            <input type="text" name="Wrong-Answer-3" id="Wrong-Answer-3" />
-            <div id="Add-Question-Error-Text"></div>
-            <button id="Add-Question-Button">Add</button>
+        <div class="add-quiz__section">
+            <label class="add-quiz__section--heading" for="Title">Title</label>
+            <input class="add-quiz__section--input" type="text" name="Title" id="Title" />
         </div>
 
-        <button id="Create-Quiz-Button">Create Quiz</button>
+        <div class="add-quiz__section">
+            <p class="add-quiz__section--heading">Add question</p>
+            <label class="add-quiz__section--label" for="Add-Question">Question</label>
+            <input class="add-quiz__section--input" type="text" name="Add-Question" id="Question" />
+            <label class="add-quiz__section--label" for="Correct-Answer">Correct Answer</label>
+            <input class="add-quiz__section--input" type="text" name="Correct-Answer" id="Correct-Answer" />
+            <label class="add-quiz__section--label" for="Wrong-Answer-1">Wrong Answers</label>
+            <input class="add-quiz__section--input" type="text" name="Wrong-Answer-1" id="Wrong-Answer-1" />
+            <input class="add-quiz__section--input" type="text" name="Wrong-Answer-2" id="Wrong-Answer-2" />
+            <input class="add-quiz__section--input" type="text" name="Wrong-Answer-3" id="Wrong-Answer-3" />
+            <div id="Add-Question-Error-Text"></div>
+            <button class="add-quiz__section--button" id="Add-Question-Button">Add</button>
+        </div>
+        
+        <div id="Added-Questions"></div>
+
+        <button class="add-quiz__section--button" id="Create-Quiz-Button">Create Quiz</button>
         @Html.AntiForgeryToken();
     }
 </div>

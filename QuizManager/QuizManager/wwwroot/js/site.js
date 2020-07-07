@@ -2,11 +2,12 @@
   function initQuiz() {
     $('#Quiz-Form').on('submit', (e) => {
       e.preventDefault();
-      console.log("Posting");
+
+      let QuizId = $('input[name="QuizId"]').val();
       let questionIds = $("[name='QuestionId']");
-      let answers = $("[name='Answer']")
+      let answers = $("[name='Answer']");
       let answerModel = {
-        "QuizId": 1,
+        "QuizId": parseInt(QuizId),
         "AnswersToCheck": []
       }
 
@@ -71,8 +72,8 @@
         };
 
         document.getElementById('Added-Questions').innerHTML += `
-    <div>
-      <p>Question: ${question}</p>
+    <div class="add-quiz__section">
+      <p class="add-quiz__section--heading">Question: ${question}</p>
       <p>Correct Answer: ${correctAnswer}</p>
       <p>Wrong Answers: ${wrongAnswer1}, ${wrongAnswer2}, ${wrongAnswer3}</p>
       <input class="question-json" type="hidden" value='${JSON.stringify(questionJson)}'  />

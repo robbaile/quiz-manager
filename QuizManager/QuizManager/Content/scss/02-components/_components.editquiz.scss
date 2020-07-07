@@ -1,0 +1,86 @@
+﻿@import '../01-settings/settings';
+
+.edit {
+    &__container {
+        max-width: 750px;
+        margin: 20px auto;
+    }
+
+
+    &__header {
+        text-align: center;
+
+        &--heading {
+            padding-top: 15px;
+            font-size: 22px;
+        }
+
+        &--sub-heading {
+            margin-top: 5px;
+            font-size: 18px;
+        }
+
+        &--nav {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            width: 100px;
+            justify-content: space-evenly;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    &__button {
+        text-align: center;
+        background-color: $color-primary;
+        font-size: 18px;
+        margin: 10px;
+        padding: 8px 25px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $color-secondary;
+        }
+    }
+
+    &__question {
+        background-color: #ffffff;
+        color: $color-secondary;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        display: block;
+        margin: 10px 0;
+        padding: 20px;
+
+
+        &--heading {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        &--button {
+            text-align: center;
+            background-color: $color-primary;
+            font-size: 18px;
+            margin: 10px;
+            padding: 5px 15px;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+
+            &:hover {
+                cursor: pointer;
+                background-color: $color-secondary;
+            }
+        }
+    }
+}

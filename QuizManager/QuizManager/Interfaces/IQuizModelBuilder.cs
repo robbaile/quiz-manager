@@ -17,5 +17,9 @@ namespace QuizManager.Interfaces
         public bool UpdateQuestion(EditQuestionModel editQuestion);
 
         public bool CreateQuestion(NewQuestionModel newQuestion);
+
+        public bool Delete(int id);
+
+        public string DeleteQuestion(int quizId, int id);
     }
 }

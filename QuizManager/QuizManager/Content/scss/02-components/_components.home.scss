@@ -1,0 +1,75 @@
+﻿@import '../01-settings/settings';
+
+.home {
+    &__header {
+        text-align: center;
+
+        &--heading {
+            padding-top: 20px;
+            font-size: 18px;
+        }
+
+        &--subheading {
+            padding-top: 5px;
+            font-size: 22px;
+        }
+
+        &--logout {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    }
+
+    &__quiz {
+        max-width: 750px;
+        margin: 20px auto;
+
+        &--container {
+            background-color: #ffffff;
+            color: $color-secondary;
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            display: block;
+            margin: 10px 0;
+        }
+
+        &--heading {
+            font-weight: bold;
+            padding-top: 10px;
+            margin: 5px 10px;
+            font-size: 20px;
+        }
+
+        &--links {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        &--link {
+            margin: 5px 10px;
+            color: $color-secondary;
+        }
+    }
+
+    &__main {
+        &--quiz-link {
+            font-size: 18px;
+
+            &__container {
+                margin-top: 15px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.page__link {
+    margin: 2px 5px;
+
+    &:hover {
+        text-decoration: none;
+        cursor: pointer;
+    }
+}

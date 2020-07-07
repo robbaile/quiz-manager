@@ -81,6 +81,16 @@ namespace QuizManager.ModelBuilders
             return _quizService.CreateQuestion(newQuestion).GetAwaiter().GetResult();
         }
 
+        public bool Delete(int id)
+        {
+            return _quizService.DeleteQuiz(id).GetAwaiter().GetResult();
+        }
+
+        public string DeleteQuestion(int quizId, int id)
+        {
+            return _quizService.DeleteQuestion(quizId, id).GetAwaiter().GetResult();
+        }
+
         public bool UpdateQuestion(EditQuestionModel editQuestion)
         {
             return _quizService.UpdateQuestion(editQuestion.Question).GetAwaiter().GetResult();

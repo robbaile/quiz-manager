@@ -1,37 +1,55 @@
 ﻿@model QuizManager.Models.Quiz
-<h1>@Model.Title Quiz</h1>
-<p>Answer questions and then submit to see how you've done!</p>
 
-<div id="Quiz-Body">
+<div class="quiz__header">
+    <h1 class="quiz__header--heading">@Model.Title Quiz</h1>
+    <p class="quiz__header--sub-heading">Answer questions and then submit to see how you've done!</p>
+    <div class="quiz__header--nav">
+        <a class="page__link" href="/Home/Index">Home</a>
+        <a class="page__link" href="/Home/Logout">Logout</a>
+    </div>
+</div>
+
+<div class="quiz__container" id="Quiz-Body">
     @using (Html.BeginForm("Results", "Quiz", FormMethod.Post, new { @id = "Quiz-Form" }))
     {
-        foreach (var question in Model.Questions)
+
+        @foreach (var question in Model.Questions)
         {
-            <p>@question.QuestionText?</p>
+            <div class="question__container">
+                <p class="question__heading">@question.QuestionText?</p>
+                @{
+                    var potentialAnswers = new List<string>
+                    ();
+                    potentialAnswers.Add(question.CorrectAnswer);
+                    foreach (var answer in question.WrongAnswers)
+                    {
+                        potentialAnswers.Add(answer);
+                    }
 
-            var potentialAnswers = new List<string>();
-            potentialAnswers.Add(question.CorrectAnswer);
-            foreach (var answer in question.WrongAnswers)
-            {
-                potentialAnswers.Add(answer);
-            }
+                    <div class="question__answer-container">
+                        @foreach (var answer in potentialAnswers.Distinct().OrderBy(x => System.Guid.NewGuid().ToString()).ToList())
+                        {
+                        <p>@answer</p>
+                        }
+                    </div>
 
-            foreach (var answer in potentialAnswers.Distinct().OrderBy(x => System.Guid.NewGuid().ToString()).ToList())
-            {
-                <p>@answer</p>
-            }
 
-            @Html.Hidden("QuestionId", question.Id.ToString())
+                    @Html.Hidden("QuestionId", question.Id.ToString())
 
-            <select name="Answer">
-                @foreach (var answer in potentialAnswers.Distinct().OrderBy(x => System.Guid.NewGuid().ToString()).ToList())
-                {
-                    <option value="@answer">@answer</option>
+                    <select class="question__select" name="Answer">
+                        <option value="0">Please select an answer...</option>
+                        @foreach (var answer in potentialAnswers.Distinct().OrderBy(x => System.Guid.NewGuid().ToString()).ToList())
+                        {
+                            <option value="@answer">@answer</option>
+                        }
+                    </select>
                 }
-            </select>
+            </div>
         }
 
-        <button>Check my answers!</button>
+
+        <input type="hidden" value="@Model.Id" name="QuizId" />
+        <button class="quiz__button-submit">Check my answers!</button>
         @Html.AntiForgeryToken();
     }
 </div>

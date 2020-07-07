@@ -1,0 +1,56 @@
+﻿@import '../01-settings/settings';
+
+.add-quiz {
+    &__container {
+        max-width: 750px;
+        margin: 20px auto;
+    }
+
+    &__section {
+        background-color: #ffffff;
+        color: $color-secondary;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        display: block;
+        margin: 10px 0;
+        padding: 20px;
+
+        &--heading {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        &--button {
+            text-align: center;
+            background-color: $color-primary;
+            font-size: 18px;
+            margin: 10px;
+            padding: 5px 15px;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+
+            &:hover {
+                cursor: pointer;
+                background-color: $color-secondary;
+            }
+        }
+
+        &--label {
+            margin: 10px 0 5px 0;
+            display: block;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        &--input {
+            display: block;
+            border: 1px solid $color-secondary;
+            border-radius: 6px;
+            height: 30px;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+    }
+}
