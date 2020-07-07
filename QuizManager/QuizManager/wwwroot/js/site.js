@@ -35,14 +35,16 @@
         data: JSON.stringify(answerModel),
         success: function (res) {
           $('#Quiz-Body').html(`
-          <p>You have scored</p>
-          <p>${res.score}</p>
-          <p>Out of a possible</>
-          <p>${res.total}</p>
-          <a href='/Home/Index'>Return home</a>
-          <p>or</p>
-          <a href='/Quiz?id=${res.quizId}'>Try again</a>
-        `)
+          <div class="results__container">
+            <p>You have scored</p>
+            <p class="results__score">${res.score}</p>
+            <p>Out of a possible</>
+            <p class="results__score">${res.total}</p>
+            <a href='/Home/Index'>Return home</a>
+            <p>or</p>
+            <a href='/Quiz?id=${res.quizId}'>Try again</a>
+          </div>
+          `)
         },
         dataType: "json"
       })

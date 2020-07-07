@@ -1,0 +1,20 @@
+﻿@import '../01-settings/settings';
+
+.results__container {
+    max-width: 750px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    color: $color-secondary;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    display: block;
+    margin: 10px 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.results__score {
+    font-size: 26px;
+    font-weight: bold;
+}
+
