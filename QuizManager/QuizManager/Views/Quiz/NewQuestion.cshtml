@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "NewQuestion";
+}
+
+<h1>Create new Question</h1>
+
+<div id="Quiz-Body">
+    @using (Html.BeginForm("CreateQuestion", "Quiz", FormMethod.Post, new { @id = "Create-Question-Form" }))
+    {
+        <label for="Question">Question</label>
+        <input name="Question" type="text" />
+        <label for="CorrectAnswer">Correct Answer</label>
+        <input name="CorrectAnswer" type="text" />
+        <label for="WrongAnswers">Wrong Answers</label>
+        <input name="WrongAnswers-1" type="text" />
+        <input name="WrongAnswers-2" type="text" />
+        <input name="WrongAnswers-3" type="text" />
+        <input name="QuizId" type="hidden" value="@ViewBag.UserId" />
+        <div class="error-text"></div>
+        <button>Add Question</button>
+    }
+</div>
+
+<script>
+    index.initCreateQuestion();
+</script>
+

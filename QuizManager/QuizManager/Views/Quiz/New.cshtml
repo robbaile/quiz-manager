@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "New";
+}
+
+<h1>Create new Quiz</h1>
+
+<div id="Quiz-Body">
+    @using (Html.BeginForm("Create", "Quiz", FormMethod.Post, new { @id = "Create-Quiz-Form" }))
+    {
+        <label for="Title">Title</label>
+        <input type="text" name="Title" id="Title" />
+
+        <div id="Added-Questions"></div>
+
+        <div>
+            <p>Add question</p>
+            <label for="Add-Question">Question</label>
+            <input type="text" name="Add-Question" id="Question" />
+            <label for="Correct-Answer">Correct Answer</label>
+            <input type="text" name="Correct-Answer" id="Correct-Answer" />
+            <label for="Wrong-Answer-1">Wrong Answers</label>
+            <input type="text" name="Wrong-Answer-1" id="Wrong-Answer-1" />
+            <input type="text" name="Wrong-Answer-2" id="Wrong-Answer-2" />
+            <input type="text" name="Wrong-Answer-3" id="Wrong-Answer-3" />
+            <div id="Add-Question-Error-Text"></div>
+            <button id="Add-Question-Button">Add</button>
+        </div>
+
+        <button id="Create-Quiz-Button">Create Quiz</button>
+        @Html.AntiForgeryToken();
+    }
+</div>
+
+<script>
+    index.initCreateQuiz();
+</script>

@@ -1,0 +1,31 @@
+﻿@model QuizManager.Models.EditQuestionModel
+@{
+    ViewData["Title"] = "Edit Question";
+}
+
+<h1>Edit Question</h1>
+
+<div id="Quiz-Body">
+    @using (Html.BeginForm("EditQuestion", "Quiz", FormMethod.Post, new { @id = "Edit-Question-Form" }))
+    {
+        <label for="Question">Question</label>
+        <input type="text" name="Question" value="@Model.Question.QuestionText" />
+        <label for="CorrectAnswer">Correct Answer</label>
+        <input type="text" name="CorrectAnswer" value="@Model.Question.CorrectAnswer" />
+        <label for="WrongAnswer">WrongAnswers</label>
+        @foreach (var wrongAnswer in Model.Question.WrongAnswers)
+        {
+            <input class="input__wrong-answer" type="text" name="WrongAnswer" value="@wrongAnswer" />
+        }
+
+        <input type="hidden" value="@Model.QuizId" id="Quiz-Id" />
+        <input type="hidden" value="@Model.QuestionId" id="Question-Id" />
+        @Html.AntiForgeryToken();
+
+        <button id="Update-Question-Button">Update</button>
+    }
+</div>
+
+<script>
+    index.initEditQuestion();
+</script>

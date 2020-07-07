@@ -12,6 +12,14 @@ namespace QuizManager.Interfaces
 
         public Task<Quiz> GetQuiz(int id);
 
+        public Task<Question> GetQuestion(int questionId);
+
         public Task<int> GetTotatlQuizQuestions(int id);
+
+        public Task<bool> CreateQuiz(Models.NewQuizModel newQuiz);
+
+        public Task<bool> UpdateQuestion(Models.Question question);
+
+        public Task<bool> CreateQuestion(Models.NewQuestionModel question);
     }
 }

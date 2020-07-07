@@ -1,0 +1,20 @@
+﻿@model QuizManager.Models.Quiz
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit @Model.Title Quiz</h1>
+
+<a href="/Quiz/NewQuestion?id=@Model.Id">Add new question</a>
+@foreach (var question in Model.Questions)
+{
+    <p>Question: @question.QuestionText</p>
+    <p>Correct Answer: @question.CorrectAnswer</p>
+    <p>
+        Wrong answers @foreach (var wrongAnswer in question.WrongAnswers)
+        {
+            <span>- @wrongAnswer</span>
+        }
+    </p>
+    <a href="/Quiz/EditQuestion?id=@Model.Id&questionId=@question.Id">Edit Question</a>
+}

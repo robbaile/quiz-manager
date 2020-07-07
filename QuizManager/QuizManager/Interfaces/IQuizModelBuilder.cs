@@ -9,5 +9,13 @@ namespace QuizManager.Interfaces
     public interface IQuizModelBuilder
     {
         public Quiz Build(int id);
+
+        public EditQuestionModel BuildEditQuestion(int quizId, int questionId);
+
+        public string Create(NewQuizModel newQuiz);
+
+        public bool UpdateQuestion(EditQuestionModel editQuestion);
+
+        public bool CreateQuestion(NewQuestionModel newQuestion);
     }
 }
